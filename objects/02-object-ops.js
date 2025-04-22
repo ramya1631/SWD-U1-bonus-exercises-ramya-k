@@ -87,7 +87,23 @@ for (let restaurant of restaurants) {
 */
 
 // TODO: create objects and put them in an array
+let Gardens={
+name:"botanical gardens",
+location:"St.peters",
+ adultTicketPrice:20,
+  childTicketPrice:10,
+   famousFeatures:["butterfly pavilion","waterfall","living wall exhibit"]
+};
 
+
+let Museums = {
+	name: "Natural History Museum",
+	location: "st.louis, MO",
+	adultTicketPrice: 22,
+	childTicketPrice: 12,
+	famousFeatures: ["Dinosaur Fossil Hall", "Planetarium", "Interactive Earth Lab"]
+};
+let attractions=[Gardens,Museums];
 /*
 	Loop through the array, then within that for loop, use a for...in loop to grab values from each key and print them to the console. If you come across a key storing an array, print each element in the array instead of the array itself. Remember that you need a new index variable with each nested FOR loop (i, j are common).
 
@@ -95,6 +111,17 @@ for (let restaurant of restaurants) {
 */
 
 // TODO: use nested loops to print values inside objects
+for(let attraction of attractions){
+for(let key in attraction){
+if (Array.isArray(attraction[key])) {
+			for (let i = 0; i < attraction[key].length; i++) {
+				console.log(attraction[key][i]);
+			}
+		} else {
+			console.log(attraction[key]);
+		}
+	}
+}
 
 /*
 	Last task: loop through the outer array and print a single template literal for each attraction using placeholders referencing the object at each index. Here's an example:
@@ -105,5 +132,13 @@ for (let restaurant of restaurants) {
 	A favorite with the locals, the Kendrick-Lampton Art Museum boasts over a dozen features, including the Manet Gallery, Renaissance Wing, and Tiffany Collection. Admission is $26 for adults, $14 for children ages 5-12, and free for children 4 and under.
 */
 
+
+
 // TODO: Print a template literal
 
+for (let place of attractions) {
+	console.log(`\n**********************************************`);
+	console.log(`${place.name} - ${place.location}`);
+	console.log(`**********************************************`);
+	console.log(`A favorite with the locals, the ${place.name} boasts over a dozen features, including the ${place.famousFeatures[0]}, ${place.famousFeatures[1]}, and ${place.famousFeatures[2]}. Admission is $${place.adultTicketPrice} for adults, $${place.childTicketPrice} for children ages 5-12, and free for children 4 and under.\n`);
+}
